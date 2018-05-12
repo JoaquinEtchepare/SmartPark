@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>SmartPark</title>
-	<link href="style.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-
-</body>
-</html>
+<video autoplay muted loop id="myVideo">
+	<source src="img/bg.mp4" type="video/mp4">
+	</video>
+	<head>
+		<title>SmartPark</title>
+		<link href="Librerias/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<div class=" centro">
+			<div class="row">
+				<div class="col-sm">
+					<div class="row">
+					<button type="button" class="btn btn-primary">Crear SmartCard</button>
+					</div>
+					<br>
+					<div class="row">
+					<button type="button" class="btn btn-primary">Ingresar Estadia</button>
+				</div>
+				</div>
+				<div class="col-sm">
+					<video id="monitor"></video>
+				</div>
+							</div>
+		</div>
+		<script type="text/javascript" src="Librerias/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="Librerias/instascan/instascan.min.js"></script>
+		<script type="text/javascript" src="Librerias/sweetalert2/sweetalert2.all.js"></script>
+		<script type="text/javascript" src="Librerias/bootstrap/bootstrap.min.js"></script>
+		<script type="text/javascript" src="smartpark.js"></script>
+		
+	</body>
+	</html>
