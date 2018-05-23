@@ -49,8 +49,8 @@ function crearEstacionamiento(filas,columnas){
     estacionamiento[nroLugar]=lugarVacio;
   }
 
-  function crearQr(cliente){
-    var qrcode = new QRCode("qrcode", {
+  function crearQr(cliente, idDelDiv){
+    var qrcode = new QRCode(idDelDiv, {
     text: JSON.stringify(cliente),
     width: 128,
     height: 128,
@@ -101,18 +101,13 @@ function crearEstacionamiento(filas,columnas){
       html:
         '<div id="qrcode" style="text-align: center;"></div>'
         ,
-      confirmButtonText: 'Aceptar',
+      confirmButtonText: 'Imprimir',
       onOpen: function(){
-        crearQr(smartCard);
-      },
-      customButtons:[{
-  name:"Imprimir!",
-  onClick:function(){
-    //dwindow.print();o stuff
-  }
-}]
+        crearQr(smartCard,"qrcode");
+      }
     }).then(function(){
-      
+      crearQr(smartCard,"impresionQR");
+      window.print();
     })
   }
 })

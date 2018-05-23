@@ -33,10 +33,22 @@ video {
 
 
 
-.swal2-content {
-    -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
-    color-adjust: exact !important;                 /*Firefox*/
-
+#impresionQR {
+        visibility: hidden;
+    }
+@media print {
+    body * { visibility:  }
+    #impresionQR, #impresionQR * {
+        position: absolute; top: 40px; left: 30px;
+        visibility: visible !important;
+          position: absolute;
+    left: 0;
+    top: 0;
+     -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
+    color-adjust: exact !important;    
+    z-index: 100;
+    }
+ 
 }
 
 
