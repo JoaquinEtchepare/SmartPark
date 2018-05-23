@@ -49,6 +49,68 @@ function crearEstacionamiento(filas,columnas){
     estacionamiento[nroLugar]=lugarVacio;
   }
 
+  function crearQr(cliente){
+    var qrcode = new QRCode("qrcode", {
+    text: JSON.stringify(cliente),
+    width: 128,
+    height: 128,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.L
+});
+  }
+
+  function ingresarEstadia(){
+
+  }
+  function crearCliente()
+  {
+
+    swal.mixin({
+  input: 'text',
+  confirmButtonText: 'siguiente &rarr;',
+  showCancelButton: true,
+  progressSteps: ['1', '2', '3', "4"]
+}).queue([
+  {
+    title: 'Nombre',
+    text: 'Juan Perez'
+  },
+  {
+    title: 'C.I',
+    text: 'Sin puntos ni guiones'
+  },
+  {
+    title: 'Matricula',
+    text: 'IAA1234'
+  },
+  {
+    title: 'Detalle',
+    text: 'Honda rojo'
+  }
+]).then((result) => {
+  if (result.value) {
+    var smartCard={
+      n: result.value[0],
+      c: result.value[1],
+      m: result.value[2],
+      d: result.value[3]};
+
+    swal({
+      title: 'SmartCard Creada!',
+      html:
+        '<div id="qrcode" style="text-align: center;"></div>'
+        ,
+      confirmButtonText: 'Imprimir!',
+      onOpen: function(){
+        crearQr(smartCard);
+      }
+    }).then(function(){
+      window.print();
+    })
+  }
+})
+  }
 var lectorqr = new Instascan.Scanner({ video: document.getElementById('monitor') });
 lectorqr.addListener('scan', function (contenido) {
   var smartCard = JSON.parse(contenido)
