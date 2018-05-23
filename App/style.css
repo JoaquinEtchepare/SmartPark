@@ -25,3 +25,9 @@ video {
     background: rgba(0, 0, 0, 0.75);
     color: #f1f1f1;
 }
+
+
+.swal2-content {
+    -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
+    color-adjust: exact !important;                 /*Firefox*/
+}
