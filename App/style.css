@@ -26,14 +26,18 @@ video {
     color: #f1f1f1;
 }
 
-<<<<<<< HEAD
+
 #qrcode img {
     margin: auto;
 }
-=======
+
+
 
 .swal2-content {
     -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
     color-adjust: exact !important;                 /*Firefox*/
+
 }
->>>>>>> fc602f0d9fc78a40001f5a64ef0bd61b6f6a8c11
+
+
+
