@@ -101,12 +101,18 @@ function crearEstacionamiento(filas,columnas){
       html:
         '<div id="qrcode" style="text-align: center;"></div>'
         ,
-      confirmButtonText: 'Imprimir!',
+      confirmButtonText: 'Aceptar',
       onOpen: function(){
         crearQr(smartCard);
-      }
+      },
+      customButtons:[{
+  name:"Imprimir!",
+  onClick:function(){
+    //dwindow.print();o stuff
+  }
+}]
     }).then(function(){
-      window.print();
+      
     })
   }
 })
