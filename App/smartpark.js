@@ -37,6 +37,7 @@ function crearEstacionamiento(filas,columnas){
     estacionamiento[nroLugar]=lugar;
 
   }
+  
   function liberarLugar(nroLugar){
     var lugarVacio={
       ocupado: false,
@@ -61,7 +62,7 @@ function crearEstacionamiento(filas,columnas){
   }
 
   function ingresarEstadia(){
-
+    
   }
   function crearCliente()
   {
@@ -112,7 +113,13 @@ function crearEstacionamiento(filas,columnas){
   }
 })
   }
-var lectorqr = new Instascan.Scanner({ video: document.getElementById('monitor') });
+  function tarifas(){
+    
+  }
+  function ayuda(){
+
+  }
+  var lectorqr = new Instascan.Scanner({ video: document.getElementById('monitor') });
 lectorqr.addListener('scan', function (contenido) {
   var smartCard = JSON.parse(contenido)
 
