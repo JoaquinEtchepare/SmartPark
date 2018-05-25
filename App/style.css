@@ -19,7 +19,7 @@ video {
 .centro {
 	position: fixed;
     margin:20%;
-    margin-top: 120px;
+    margin-top: 180px;
     padding: 20px;
     width: 60%;
     background: rgba(0, 0, 0, 0.75);
@@ -33,23 +33,7 @@ video {
 
 
 
-#impresionQR {
-        visibility: hidden;
-    }
-@media print {
-    body * { visibility:  }
-    #impresionQR, #impresionQR * {
-        position: absolute; top: 40px; left: 30px;
-        visibility: visible !important;
-          position: absolute;
-    left: 0;
-    top: 0;
-     -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
-    color-adjust: exact !important;    
-    z-index: 100;
-    }
- 
-}
+
 
 
 

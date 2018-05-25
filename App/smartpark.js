@@ -14,6 +14,13 @@ function crearEstacionamiento(filas,columnas){
     estacionamiento[i]=lugarVacio;
   }
 }
+function imprimir(smartCard){
+  var old= document.body.innerHTML;
+  document.body.innerHTML='<img style="text-align: left;" src="img/logo.png"><div id="qrcode2" style="text-align: right;"></div>';
+  crearQr(smartCard,"qrcode2");
+  window.print();
+  document.body.innerHTML=old;
+}
   function buscarLugar(){
     var lugar=null;
     estacionamiento.forEach(
@@ -107,8 +114,7 @@ function crearEstacionamiento(filas,columnas){
         crearQr(smartCard,"qrcode");
       }
     }).then(function(){
-      crearQr(smartCard,"impresionQR");
-      window.print();
+      setTimeout(function() {imprimir(smartCard)},500);
     })
   }
 })
