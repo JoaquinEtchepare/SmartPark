@@ -1,54 +1,59 @@
 <!DOCTYPE html>
 <html>
-	<video autoplay muted loop id="myVideo">
+
+<video autoplay muted loop id="myVideo">
 	<source src="img/bg.mp4" type="video/mp4">
 	</video>
 
-	<head>
-		<title>SmartPark</title>
-		<link href="Librerias/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
-		<link href="style.css" rel="stylesheet" type="text/css">
+<head>
+    <title>SmartPark</title>
+    <link href="Librerias/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css">
 
-	</head>
-	<div id="impresionQR"></div>
+</head>
 
-	<body>
-	
-		<div class=" centro">
-			<div class="row">
-				<div class="col-sm">
-					
-					<div class="row">
-					<button type="button" onclick="crearCliente()" class="btn btn-primary">Crear SmartCard</button>
-					</div>
-					<br>
-					<div class="row">
-					<button type="button" onclick="ingresarEstadia()" class="btn btn-primary">Ingresar Estadia</button>
-					</div>
-					<br>
-					<div class="row">
-					<button type="button" onclick="tarifas()" class="btn btn-primary">Tarifas</button>
-					</div>
-					<br>
-					<div class="row">
-					<button type="button" onclick="ayuda()" class="btn btn-primary">Ayuda</button>
-					</div>
-					</div>
-				<div class="col-sm">
-					<video id="monitor"></video>
-				</div>
-							</div>
-		</div>
+<img style="display:inherit;
+    margin-left: auto;
+    margin-right: auto; z-index: 10" src="img/logo.png" />
 
-		<script type="text/javascript" src="Librerias/jquery/jquery.min.js"></script>
-		<script type="text/javascript" src="Librerias/instascan/instascan.min.js"></script>
-		<script type="text/javascript" src="Librerias/sweetalert2/sweetalert2.all.js"></script>
-		<script type="text/javascript" src="Librerias/bootstrap/bootstrap.min.js"></script>
-		<script type="text/javascript" src="Librerias/moment/moment.js"></script>
-		<script type="text/javascript" src="Librerias/qrcode/qrcode.min.js"></script>
-		<script type="text/javascript" src="smartpark.js"></script>
+<body>
 
-		
-	</body>
+    <div class=" centro">
 
-	</html>
+        <div class="row">
+            <div class="col-sm">
+
+                <div class="row">
+                    <button type="button" onclick="crearCliente()" class="btn btn-primary">Crear SmartCard</button>
+                </div>
+                <br>
+                <div class="row">
+                    <button type="button" onclick="ingresarEstadia()" class="btn btn-primary">Estadia diaria</button>
+                </div>
+                <br>
+                <div class="row">
+                    <button type="button" onclick="tarifas()" class="btn btn-primary">Tarifas</button>
+                </div>
+                <br>
+                <div class="row">
+                    <button type="button" onclick="ayuda()" class="btn btn-primary">Ayuda</button>
+                </div>
+            </div>
+            <div class="col-sm">
+                <video id="monitor"></video>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="Librerias/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="Librerias/instascan/instascan.min.js"></script>
+    <script type="text/javascript" src="Librerias/sweetalert2/sweetalert2.all.js"></script>
+    <script type="text/javascript" src="Librerias/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="Librerias/moment/moment.js"></script>
+    <script type="text/javascript" src="Librerias/qrcode/qrcode.min.js"></script>
+    <script type="text/javascript" src="smartpark.js"></script>
+
+
+</body>
+
+</html>
