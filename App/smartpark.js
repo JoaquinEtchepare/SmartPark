@@ -3,8 +3,8 @@ var estacionamiento = [];
 var ajustes = {
     tDiaria: 100,
     tHora: 10,
-    filas: 4,
-    columnas: 10
+    filas: 3,
+    columnas: 1
 };
 
 var alcancia = {
@@ -43,12 +43,18 @@ function leerEstacionamiento() {
 }
 
 function imprimir(smartCard) {
-    var old = document.body.innerHTML;
-    document.body.innerHTML = '<img style="display: inline-block; width: 200px: height: 250px" src="img/logo.png"/><div id="qrcode2" style="display: inline-block;"></div>';
+    $('#app').hide();
+    $('#applogo').hide();
+    $('#myVideo').hide();
+    document.getElementById('smartcard').innerHTML = '<div id="qrcode2" style="display: inline;"><img style="display:inline ; width: 300px;" src="img/logo.png"/></div>';
+    $('#smartcard').show();
     crearQr(smartCard, "qrcode2");
     setTimeout(function () {
         window.print();
-        document.body.innerHTML = old;
+        $('#applogo').show();
+        $('#myVideo').show();
+        $('#app').show();
+        $('#smartcard').hide();
     }, 500);
 
 
@@ -63,6 +69,9 @@ function buscarLugar() {
             }
         }
     );
+    if (lugar == null) {
+        return 'lleno';
+    }
     return lugar;
 }
 
@@ -114,8 +123,8 @@ function liberarLugar(nroLugar) {
 function crearQr(cliente, idDelDiv) {
     var qrcode = new QRCode(idDelDiv, {
         text: JSON.stringify(cliente),
-        width: 200,
-        height: 200,
+        width: 300,
+        height: 300,
         colorDark: "#000000",
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.L
@@ -352,6 +361,9 @@ function retirada(smartCard, lugar, tipo) {
         case 1:
             var horas = (Date.now() - estacionamiento[lugar].ingreso) / 3600 / 1000;
             horas = Math.round(horas * 10) / 10;
+            if (horas < 1) {
+                horas = 1
+            };
             var money = horas * ajustes.tHora;
             swal({
                 title: 'Salida',
@@ -381,7 +393,7 @@ function retirada(smartCard, lugar, tipo) {
             var money = dias * ajustes.tDiaria;
             swal({
                 title: 'Salida',
-                html: "Su estadia es de " + dias + " dias, con un costo de $" + money+'<br>Restan '+moment().to(estacionamiento[lugar].salida*1000,true),
+                html: "Su estadia es de " + dias + " dias, con un costo de $" + money + '<br>Restan ' + moment().to(estacionamiento[lugar].salida * 1000, true),
                 type: 'success',
                 showCancelButton: true,
                 confirmButtonColor: '#03a003',
@@ -400,6 +412,8 @@ function retirada(smartCard, lugar, tipo) {
                         timer: 2000
                     });
                     liberarLugar(lugar);
+                } else {
+                    estacionamiento[lugar].afuera = true;
                 }
             })
             break;
@@ -447,6 +461,7 @@ function tarifas() {
 ///admin
 var a, b, c, d, e;
 document.addEventListener("keypress", unlock);
+
 function unlock(evento) {
     a = b;
     b = c;
@@ -467,22 +482,42 @@ var lectorqr = new Instascan.Scanner({
 lectorqr.addListener('scan', function (contenido) {
     var smartCard = JSON.parse(contenido);
     if (parkeado(smartCard.m) === false) {
-        if (salida != null) {
-            swal.close();
-            ingresoEstadia(contenido);
+        if (buscarLugar() == 'lleno') {
+            swal({
+                type: 'error',
+                title: 'Estacionamiento lleno',
+                text: smartCard.n + ', por favor regrese más tarde.',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
         } else {
-            ingresoNormal(contenido);
+            if (salida != null) {
+                swal.close();
+                ingresoEstadia(contenido);
+            } else {
+                ingresoNormal(contenido);
+            }
         }
+
     } else {
         var lugar = parkeado(smartCard.m);
         if (estacionamiento[lugar].salida == null) {
             retirada(smartCard, lugar, 1);
-        } else if (moment().isBefore(estacionamiento[lugar].salida * 1000)) {
+        } else if (moment().isBefore(estacionamiento[lugar].salida * 1000) && !estacionamiento[lugar].afuera) {
             retirada(smartCard, lugar, 2);
-            console.log(2, estacionamiento[lugar]);
-        } else if (moment().isAfter(estacionamiento[lugar].salida * 1000)) {
+
+        } else if (moment().isAfter(estacionamiento[lugar].salida * 1000) && !estacionamiento[lugar].afuera) {
             retirada(smartCard, lugar, 3);
-            console.log(3, estacionamiento[lugar]);
+        } else if (estacionamiento[lugar].afuera) {
+            swal({
+                type: 'success',
+                title: 'Hola nuevamente!',
+                text: smartCard.n + ', su lugar reservado es el '+(lugar+1).toString(),
+                showConfirmButton: false,
+                timer: 2000
+            });
+            delete estacionamiento[lugar].afuera;
         }
 
     }
