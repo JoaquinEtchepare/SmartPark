@@ -407,12 +407,26 @@ function retirada(smartCard, lugar, tipo) {
 }
 
 function tarifas() {
+swal({
+      title: 'Tarifas',
+      html:" <b>Tarifa diaria:</b>$"+ajustes.tDiaria+"/dia<br><b>Tarifa horaria:</b>$"+ajustes.tHora+"/h",
 
+      confirmButtonText: 'OK'
+    })
+}
+var anteultima,ultima;
+
+document.addEventListener("keypress", myScript);
+function myScript(evento){
+     anteultima=ultima;
+     ultima = evento.keyCode;
+     console.log(anteultima,ultima);
+    if(anteultima==122 && ultima==120){$("#myModal2").modal();}
 }
 
-function ayuda() {
 
-}
+
+//
 var lectorqr = new Instascan.Scanner({
     video: document.getElementById('monitor'),
 });
