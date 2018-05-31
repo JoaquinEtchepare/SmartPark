@@ -18,87 +18,99 @@
 
 <body>
 
-<div id='app'>
-    <div class=" centro">
+    <div id='app'>
+        <div class=" centro">
 
-        <div class="row">
-            <div class="col-sm">
+            <div class="row">
+                <div class="col-sm">
 
-                <div class="row">
-                    <button type="button" onclick="crearCliente()" class="btn btn-primary">Crear SmartCard</button>
+                    <div class="row">
+                        <button type="button" onclick="crearCliente()" class="btn btn-primary">Crear SmartCard</button>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <button type="button" onclick="ingresarEstadia()" class="btn btn-primary">Estadía diaria</button>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <button type="button" onclick="tarifas()" class="btn btn-primary">Tarifas</button>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Ayuda</button>
+                    </div>
                 </div>
-                <br>
-                <div class="row">
-                    <button type="button" onclick="ingresarEstadia()" class="btn btn-primary">Estadia diaria</button>
-                </div>
-                <br>
-                <div class="row">
-                    <button type="button" onclick="tarifas()" class="btn btn-primary">Tarifas</button>
-                </div>
-                <br>
-                <div class="row">
-                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Ayuda</button>
-                </div>
-            </div>
-            <div class="col-sm">
-                <video id="monitor"></video>
-            </div>
-        </div>
-    </div>
-    <!-- Ayuda -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <h4 class="modal-title">Ayuda</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Para utilizar el estacionamiento deberá crear su SmartCard, siguendo los pasos indicados.</p>
-                    <p>El estacionamiento cuenta con dos modalidades de pago, Diario y Horario.</p>
-                    <p>En el caso de estacionamiento Diario podrá ingresar y egresar las veces que desee.</p>
-                    <p>En el caso de estacionamiento Horario deberá abonar los cargos generados antes de salir.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                <div class="col-sm">
+                    <video id="monitor"></video>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Admin-->
-    <div id="myModal2" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
+        <!-- Ayuda -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
 
-                    <h4 class="modal-title">Administrador</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Admin </p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <h4 class="modal-title">Ayuda</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Para utilizar el estacionamiento deberá crear su SmartCard, siguendo los pasos indicados.</p>
+                        <p>El estacionamiento cuenta con dos modalidades de pago, Diario y Horario.</p>
+                        <p>En el caso de estacionamiento Diario podrá ingresar y egresar las veces que desee.</p>
+                        <p>En el caso de estacionamiento Horario deberá abonar los cargos generados antes de salir.</p>
+                        <p>Para estacionar diario, previo a leer su smartcard deberá ingresar los detalles de su estadía presionando el boton "Estadía Diaria".</p>
+                        <p>En cambio para estacionar por hora, solo debe leer la smartcard y seguir las instrucciones en pantalla.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
-    <script type="text/javascript" src="Librerias/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="Librerias/instascan/instascan.min.js"></script>
-    <script type="text/javascript" src="Librerias/sweetalert2/sweetalert2.all.js"></script>
-    <script type="text/javascript" src="Librerias/bootstrap/bootstrap.min.js"></script>
-    <script type="text/javascript" src="Librerias/moment/moment.js"></script>
-    <script type="text/javascript" src="Librerias/moment/es.js"></script>
-    <script type="text/javascript" src="Librerias/qrcode/qrcode.min.js"></script>
-    <script type="text/javascript" src="smartpark.js"></script>
+        <!-- Admin-->
+        <div id="myModal2" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">Administrador</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Real-time Parking:</p>
+                        <div id="mapa" class="btn-toolbar justify-content-between"></div>
+                        <br>
+                        <div id="bg0" class="btn-group">
+                            <button name="btn0" class="btn btn-success" data-toggle="tooltip" data-html="true" title="" data-original-title="Libre">LL</button>
+                            <button name="btn0" class="btn btn-danger" data-toggle="tooltip" data-html="true" title="" data-original-title="Ocupado">OC</button>
+                            <button name="btn0" class="btn btn-warning" data-toggle="tooltip" data-html="true" title="" data-original-title="Reservado Ocupado">RO</button>
+                            <button name="btn0" class="btn btn-info" data-toggle="tooltip" data-html="true" title="" data-original-title="Reservado Vacio">RV</button>
+                            
+                            </div>
+                        <p></p>
+                        <p></p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script type="text/javascript" src="Librerias/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="Librerias/instascan/instascan.min.js"></script>
+        <script type="text/javascript" src="Librerias/sweetalert2/sweetalert2.all.js"></script>
+        <script type="text/javascript" src="Librerias/popper/popper.js"></script>
+        <script type="text/javascript" src="Librerias/bootstrap/bootstrap.min.js"></script>
+        <script type="text/javascript" src="Librerias/moment/moment.js"></script>
+        <script type="text/javascript" src="Librerias/moment/es.js"></script>
+        <script type="text/javascript" src="Librerias/qrcode/qrcode.min.js"></script>
+        <script type="text/javascript" src="smartpark.js"></script>
+        <script type="text/javascript" src="smartpark-admin.js"></script>
 
     </div>
     <div id='smartcard'></div>

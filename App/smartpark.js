@@ -4,7 +4,7 @@ var ajustes = {
     tDiaria: 100,
     tHora: 10,
     filas: 3,
-    columnas: 1
+    columnas: 10
 };
 
 var alcancia = {
@@ -458,21 +458,6 @@ function tarifas() {
         confirmButtonText: 'OK'
     })
 }
-///admin
-var a, b, c, d, e;
-document.addEventListener("keypress", unlock);
-
-function unlock(evento) {
-    a = b;
-    b = c;
-    c = d;
-    d = e;
-    e = evento.keyCode;
-    if (a == 97 && b == 100 && c == 109 && d == 105 && e == 110) {
-        $("#myModal2").modal();
-    }
-}
-
 
 
 //
