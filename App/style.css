@@ -27,6 +27,9 @@ video {
     color: #f1f1f1;
 }
 
+.centro .btn {
+    margin-left:20px;
+}
 
 #qrcode img {
     margin: auto;
