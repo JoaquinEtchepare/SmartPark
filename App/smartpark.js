@@ -402,7 +402,7 @@ function retirada(smartCard, lugar, tipo) {
                 confirmButtonColor: '#03a003',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'PAGAR $' + money + '!',
-                cancelButtonText: 'PAGAR MAS TARDE',
+                cancelButtonText: 'VOY A REGRESAR',
                 timer: 5000
             }).then((result) => {
                 if (result.value) {
