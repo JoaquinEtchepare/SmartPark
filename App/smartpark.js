@@ -166,6 +166,8 @@ function ingresarEstadia() {
                     })
 
 
+                } else {
+                    salida=null;
                 }
             })
         } else {
