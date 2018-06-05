@@ -3,8 +3,9 @@ var estacionamiento = [];
 var ajustes = {
     tDiaria: 100,
     tHora: 10,
-    filas: 3,
-    columnas: 10
+    filas: 2,
+    columnas: 8,
+    frecuencia: 0.01
 };
 
 var alcancia = {
